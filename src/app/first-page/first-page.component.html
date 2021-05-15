@@ -1,0 +1,38 @@
+<div style="    background-color: whitesmoke;">
+<header>
+    <h2>SpaceX Launch Programs</h2>
+</header>
+
+<section class="displayPage">
+    <nav class="filterDiv">
+        <h3>filters</h3>
+
+        <p>Launch Year</p>
+        <div class="yearsDiv"><span [ngClass]="{'active': item === year}" (click)="filter(item,2,2)"  *ngFor="let item of launchYear">
+         {{item}}
+        </span></div>
+        <p>Successful Launch</p>
+
+        <div  class="yearsDiv">   <span [ngClass]="{'active': launch === true}" (click)="filter(0,true,2)">true</span>
+            <span [ngClass]="{'active': launch === false}" (click)="filter(0,false,2)">false</span></div>
+
+            <p>Successful Land</p>
+
+        <div  class="yearsDiv">  <span [ngClass]="{'active': land === true}"
+            (click)="land(0,2,true)">true</span>
+        <span [ngClass]="{'active': land === false}" (click)="filter(0,2,false)">false</span></div>
+    </nav>
+
+    <article class="articleDiv" >  <span *ngFor="let mission of missions">
+            <img [src]='mission["links"]["mission_patch"]' />
+            <span style="color: blue;">{{mission["mission_name"]}}</span>
+            <span style="font-weight: bold;">Mission Ids : <a style="color: blue;"><ul ><li *ngFor="let item of mission['mission_id']">{{item}}</li></ul></a></span>
+            <span style="font-weight: bold;">Launch Year : <a style="color: blue;">{{mission["launch_year"]}}</a></span>
+            <span style="font-weight: bold;">Successful Launch : <a style="color: blue;">{{mission["launch_success"]}}</a></span>
+            <!-- <span>Successful Landing : </span><span>{{mission["mission_name"]}}</span> -->
+
+
+    </span>
+    </article>
+</section>
+</div>
